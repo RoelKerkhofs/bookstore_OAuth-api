@@ -1,7 +1,6 @@
 package cassandra
 
 import (
-	"fmt"
 	"github.com/gocql/gocql"
 )
 
@@ -17,10 +16,8 @@ func init() {
 }
 
 func GetSession() (*gocql.Session, error) {
-	fmt.Println("ik ga nu de sessie opvragen")
 	session, err := cluster.CreateSession()
 	if err != nil {
-		fmt.Println("Er ging iets mis bij de sessie ophalen", err)
 		return nil, err
 	}
 	return session, nil

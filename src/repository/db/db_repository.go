@@ -34,7 +34,6 @@ func (r *dbRepository) GetById(id string) (*access_token.AccessToken, *errors.Re
 		return nil, errors.NewInternalServerError(err.Error())
 	}
 	defer session.Close()
-	fmt.Println("In dbrepository voordat ik een accesstoken ga halen")
 	var result access_token.AccessToken
 	if err := session.Query(queryGetAccessToken, id).Scan(
 		&result.AccessToken,
@@ -42,7 +41,6 @@ func (r *dbRepository) GetById(id string) (*access_token.AccessToken, *errors.Re
 		&result.Expires,
 		&result.ClientId,
 	); err != nil {
-		fmt.Println("Net token op proberen te halen")
 
 		if err == gocql.ErrNotFound {
 			return nil, errors.NewNotFoundError("No access token found with given id")
