@@ -5,14 +5,13 @@ import (
 	"bookstore/bookstore_OAuth-api/src/utils/errors"
 	"encoding/json"
 	"github.com/mercadolibre/golang-restclient/rest"
-	_ "github.com/mercadolibre/golang-restclient/rest"
 	"time"
 )
 
 var (
 	usersRestClient = rest.RequestBuilder{
 		Timeout: 100 * time.Microsecond,
-		BaseURL: "api.bookstore.com",
+		BaseURL: "http://localhost:8082",
 	}
 )
 
